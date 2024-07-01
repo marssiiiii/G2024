@@ -1,0 +1,68 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+from matplotlib import cm as cm
+
+# 定义数据
+x = np.linspace(0.5, 3.5, 100)  # 在0.5到3.5之间均匀地取100个数
+y = np.sin(x)
+y1 = np.random.randn(100)  # 在标准正态分布中随机地取100个数
+
+# 利用scatter()画散点图
+plt.scatter(x, y1, c="0.25", label="scatter figure")
+
+# 利用plot()画函数线
+plt.plot(x, y, ls="--", label="plot figure")
+
+# some clean up(removing chartjunk)
+# turn the top spine and the right spine off
+for spine in plt.gca().spines.keys():
+    if spine == "top" or spine == "right":
+        plt.gca().spines[spine].set_color("none")
+
+# turn bottom tick for x-axis on
+plt.gca().xaxis.set_ticks_position("bottom")
+# set tick_line position of bottom
+
+# turn left ticks for y-axis on
+plt.gca().yaxis.set_ticks_position("left")
+# set tick_line position of left
+
+# 标识x轴的范围，y轴的范围
+plt.xlim(0.0, 4.0)
+plt.ylim(-3.0, 3.0)
+
+# 提供x轴，y轴标识
+plt.ylabel("y_axis")
+plt.xlabel("x_axis")
+
+# 绘制标记刻度的网格线 可加ls,lw 分别代表折线样式与折线宽度
+plt.grid(True, ls=":", color="r")
+
+# 利用axhline()绘制平行于x轴的参考线 axvline()平行于y轴
+plt.axhline(y=0.0, c="r", ls="--", lw=2)
+
+# 利用axvspan()绘制平行于x轴的参考区域 axhspan()平行于x轴, alpha代表填充颜色的透明度
+plt.axvspan(xmin=1.0, xmax=2.0, facecolor="y", alpha=.3)
+
+# 添加图形内容细节的指向型注释文本
+plt.annotate("maximum", xy=(np.pi/2, 1.0), xytext=((np.pi/2)+0.15, 1.5), weight="bold", color="r",
+             arrowprops=dict(arrowstyle="->", color="r"))
+plt.annotate("spines", xy=(0.75, -3), xytext=(0.35, -2.25), weight="bold", color="b",
+             arrowprops=dict(arrowstyle="->", color="b"))
+plt.annotate("", xy=(0, -2.78), xytext=(0.4, -2.32),
+             arrowprops=dict(arrowstyle="->", color="b"))
+plt.annotate("", xy=(3.5, -2.98), xytext=(3.6, -2.70),
+             arrowprops=dict(arrowstyle="->", color="b"))
+
+# 添加图形内容细节的无指向型注释文本
+plt.text(3.6, -2.7, "'|' is tickline", weight="bold", color="b")
+plt.text(3.6, -2.95, "3.5 is ticklabel", weight="bold", color="b")
+
+# 添加标题
+plt.title("structure of matplotlib")
+
+# 文本标签图例
+plt.legend(loc="upper right")
+
+plt.show()
