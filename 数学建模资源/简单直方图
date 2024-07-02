@@ -1,0 +1,39 @@
+import matplotlib as mpl
+
+mpl.rcParams["font.sans-serif"] = ["SimHei"]
+mpl.rcParams["axes.unicode_minus"] = False
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 输入测试数据,这行代码是使用NumPy库在Python中生成一个包含100个随机整数的数组，这些整数的范围是从0（包括）到10（不包括）。
+boxWeight = np.random.randint(0, 10, 100)
+
+x = boxWeight
+
+# 这行代码在Python中创建了一个range对象，它代表了一个从0开始到10（包括0但不包括11）的整数序列，步长为1。
+bins = range(0, 11, 1)
+
+plt.hist(x, bins=bins, color="g", histtype="bar", rwidth=1, alpha=0.6)
+
+# x:
+# 这是要绘制直方图的数据数组。plt.hist()会根据这个数组中的数据分布来绘制直方图。
+# bins:
+# 这个参数指定了直方图的分箱（或称为“桶”）边界。它可以是一个整数、序列或range对象。
+# 如果bins是一个整数，那么它指定了分箱的数量，而分箱的边界将自动计算以尽可能均匀地覆盖数据的范围。
+# 如果bins是一个序列（如列表或数组），那么它直接指定了每个分箱的边界。注意，边界的数量比bins列表中的元素数量多一个，因为列表中的每个元素都是分箱的下界，而最后一个分箱的上界是数据的最大值。
+# 在您的例子中，bins=bins（假设bins是一个range对象或已转换为列表的range），这意呀着您手动指定了分箱的边界。
+# color:
+# 指定直方图中条形的颜色。在这个例子中，color="g"将直方图的条形颜色设置为绿色。
+# histtype:
+# 指定直方图的类型。'bar'是默认值，表示标准的条形直方图。其他选项包括'step'（生成不填充的阶梯状直方图）、'stepfilled'（生成填充的阶梯状直方图）等。
+# rwidth:
+# 指定条形的相对宽度。这是一个介于0和1之间的浮点数，表示条形宽度相对于分箱宽度的比例。rwidth=1意味着条形将填满整个分箱的宽度（不考虑分箱之间的间隔）。
+# alpha:
+# 设置条形的透明度。alpha是一个介于0（完全透明）和1（完全不透明）之间的浮点数。在这个例子中，alpha=0.6将条形的透明度设置为60%的不透明度。
+
+plt.xlabel("箱子重量(kg)")
+plt.ylabel("销售数量(个)")
+
+
+plt.show()
