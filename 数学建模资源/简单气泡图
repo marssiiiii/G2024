@@ -1,0 +1,27 @@
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+
+a = np.random.randn(100)
+b = np.random.randn(100)
+
+#在这段代码中，使用了Python的NumPy库来生成随机数据，并使用Matplotlib库（通过别名plt）来绘制散点图。这里，散点图通过plt.scatter函数绘制，其参数详细解释如下：
+
+# a = np.random.randn(100) 和 b = np.random.randn(100)：
+# 这两行代码分别生成了两个包含100个元素的数组a和b。这些元素是从标准正态分布（均值为0，标准差为1）中随机抽取的。
+# plt.scatter(a, b, ...)：
+# 这是Matplotlib库中用于绘制散点图的函数。它接受多个参数来定制散点图的外观。
+# 第一个参数a是x轴上的点。
+# 第二个参数b是y轴上的点。
+# s=np.power(10*a + 20*b, 2)：
+# 这个参数s控制散点的大小。对于a和b数组中的每一对值，都计算10*a + 20*b的结果，然后将这个结果平方。这意味着散点的大小是基于a和b值的线性组合的平方来确定的。由于平方的存在，较大的a或b值会导致更大的散点。
+# c=np.random.rand(100)：
+# 这个参数c用于指定散点的颜色。这里，它接受一个包含100个随机数的数组，这些随机数是从0到1之间均匀分布的。这些值用于根据给定的颜色映射（cmap）为散点分配颜色。
+# cmap=mpl.cm.RdYlBu：
+# cmap参数指定了用于根据c参数中的值映射颜色的颜色映射表（colormap）。这里使用的是mpl.cm.RdYlBu，这是一个从红色过渡到黄色，再到蓝色的颜色映射表。这意味着散点的颜色将根据c中的值在红色、黄色和蓝色之间平滑变化。
+# marker="o"：
+# 这个参数指定了散点的标记样式。在这个例子中，"o"表示使用圆圈作为散点的标记。
+# 综上所述，这段代码创建了一个散点图，其中x轴和y轴上的点分别由a和b数组中的值确定。散点的大小基于a和b的线性组合的平方，而散点的颜色则随机分配，并在红色、黄色和蓝色之间变化。
+plt.scatter(a, b, s=np.power(10*a + 20*b, 2), c=np.random.rand(100), cmap=mpl.cm.RdYlBu, marker="o")
+
+plt.show()
