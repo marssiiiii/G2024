@@ -1,0 +1,25 @@
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+
+# 设置Matplotlib绘图中无衬线字体（sans-serif font）的默认样式为“SimHei”。
+mpl.rcParams["font.sans-serif"] = ["SimHei"]
+
+# mpl.rcParams["axes.unicode_minus"] = False 这行代码是在使用Matplotlib（一个Python的绘图库）时，用于调整图表中负号（minus sign, -）的显示方式。
+# 在Matplotlib中，rcParams是一个全局配置字典，它包含了控制Matplotlib各种默认属性的键值对。当设置mpl.rcParams["axes.unicode_minus"] =
+# False时，实际上是在告诉Matplotlib在绘制图表时，不要使用Unicode字符来表示负号，而是使用默认的减号字符（ASCII字符集中的-）。
+# 这个设置之所以重要，是因为在某些字体和Matplotlib版本中，如果axes.unicode_minus被设置为True（这是默认值之一，取决于Matplotlib的版本和配置），Matplotlib可能会尝试使用Unicode
+# 字符（如U+2212，这是一个在数学和物理领域常用的负号）来表示负号。然而，在某些情况下（特别是当使用的字体不支持该Unicode字符，或者字体渲染引擎在处理该字符时出现问题时），这可能会导致负号显示为方块、空白或其他不期望的字符。
+mpl.rcParams["axes.unicode_minus"] = False
+
+# x,y数据
+x = [1, 2, 3, 4, 5, 6, 7, 8]
+y = [3, 1, 4, 5, 8, 9, 7, 2]
+
+# 建柱状图
+plt.bar(x, y, align="center", color="c", tick_label=["q", "a", "c", "e", "r", "j", "b", "p"], hatch="/")
+
+# set x,y_axis label
+plt.xlabel("箱子编号")
+plt.ylabel("箱子重量（kg）")
+
+plt.show()
