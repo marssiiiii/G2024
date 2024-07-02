@@ -18,7 +18,7 @@ y = [3, 1, 4, 5, 8, 9, 7, 2]
 # 建柱状图（把bar变为barh即为条形图）
 plt.bar(x, y, align="center", color="c", tick_label=["q", "a", "c", "e", "r", "j", "b", "p"], hatch="/")
 
-# set x,y_axis label
+# set x,y_axis label xy轴内容也要变化
 plt.xlabel("箱子编号")
 plt.ylabel("箱子重量（kg）")
 
